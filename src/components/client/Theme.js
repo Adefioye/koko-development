@@ -17,8 +17,17 @@ export default createMuiTheme({
     },
   },
   typography: {
-    h3: {
-      fontWeight: 300,
+    tab: {
+      fontWeight: 700,
+      fontFamily: "Raleway",
+      textTransform: "none",
+      fontSize: "1rem",
+    },
+    estimate: {
+      fontFamily: "Pacifico",
+      fontSize: "1rem",
+      textTransform: "none",
+      color: "white",
     },
   },
 });
