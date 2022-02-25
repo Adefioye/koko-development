@@ -73,6 +73,7 @@ function Header() {
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -84,28 +85,85 @@ function Header() {
     setOpen(false);
   };
 
+  const handleMenuItemClick = (e, index) => {
+    setAnchorEl(null);
+    setOpen(false);
+    setSelectedIndex(index);
+    setValue(1);
+  };
+
   const handleChange = (e, value) => {
     setValue(value);
   };
 
+  const menuOptions = [
+    {
+      service: "Services",
+      link: "/services",
+    },
+    {
+      service: "Custom Software Development",
+      link: "/customSoftware",
+    },
+    {
+      service: "Mobile Applications",
+      link: "/mobileApps",
+    },
+    {
+      service: "Website Development",
+      link: "/websites",
+    },
+  ];
+
   // This is important to retain the active navigation tab after refresh
   useEffect(() => {
-    if (window.location.pathname === "/" && value !== 0) {
-      setValue(0);
-    } else if (window.location.pathname === "/services" && value !== 1) {
-      setValue(1);
-    } else if (window.location.pathname === "/customSoftware" && value !== 1) {
-      setValue(1);
-    } else if (window.location.pathname === "/mobileApps" && value !== 1) {
-      setValue(1);
-    } else if (window.location.pathname === "/websites" && value !== 1) {
-      setValue(1);
-    } else if (window.location.pathname === "/revolution" && value !== 2) {
-      setValue(2);
-    } else if (window.location.pathname === "/about" && value !== 3) {
-      setValue(3);
-    } else if (window.location.pathname === "/contact" && value !== 4) {
-      setValue(4);
+    switch (window.location.pathname) {
+      case "/":
+        if (value !== 0) {
+          setValue(0);
+        }
+        break;
+      case "/services":
+        if (value !== 1) {
+          setValue(1);
+          setSelectedIndex(0);
+        }
+        break;
+      case "/customSoftware":
+        if (value !== 1) {
+          setValue(1);
+          setSelectedIndex(1);
+        }
+        break;
+      case "/mobileApps":
+        if (value !== 1) {
+          setValue(1);
+          setSelectedIndex(2);
+        }
+        break;
+      case "/websites":
+        if (value !== 1) {
+          setValue(1);
+          setSelectedIndex(3);
+        }
+        break;
+      case "/revolution":
+        if (value !== 2) {
+          setValue(2);
+        }
+        break;
+      case "/about":
+        if (value !== 3) {
+          setValue(3);
+        }
+        break;
+      case "/contact":
+        if (value !== 4) {
+          setValue(4);
+        }
+        break;
+      default:
+        break;
     }
   }, [value]);
 
@@ -184,40 +242,20 @@ function Header() {
               classes={{ paper: classes.menu }}
               elevation={0}
             >
-              <MenuItem
-                classes={{ root: classes.menuItem }}
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                component={Link}
-                to="/services"
-              >
-                Services
-              </MenuItem>
-              <MenuItem
-                classes={{ root: classes.menuItem }}
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                component={Link}
-                to="/customSoftware"
-              >
-                Custom Software Development
-              </MenuItem>
-              <MenuItem
-                classes={{ root: classes.menuItem }}
-                onClick={() => {
-                  handleClose();
-                  setValue(1);
-                }}
-                component={Link}
-                to="/mobileApps"
-              >
-                Mobile Applications
-              </MenuItem>
-              <MenuItem
+              {menuOptions.map((menu, index) => (
+                <MenuItem
+                  component={Link}
+                  classes={{ root: classes.menuItem }}
+                  onClick={(e) => {
+                    handleMenuItemClick(e, index);
+                  }}
+                  to={menu.link}
+                  selected={selectedIndex === index && value === 1}
+                >
+                  {menu.service}
+                </MenuItem>
+              ))}
+              {/* <MenuItem
                 classes={{ root: classes.menuItem }}
                 onClick={() => {
                   handleClose();
@@ -227,7 +265,7 @@ function Header() {
                 to="/websites"
               >
                 Website Development
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
           </Toolbar>
         </AppBar>
