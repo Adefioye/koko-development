@@ -96,6 +96,20 @@ const useStyles = makeStyles((theme) => ({
     height: "50px",
     width: "50px",
   },
+  drawer: {
+    backgroundColor: theme.palette.common.blue,
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color: "white",
+    opacity: 0.7,
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.orange,
+  },
+  drawerItemSelected: {
+    opacity: 1,
+  },
 }));
 
 function Header() {
@@ -197,6 +211,11 @@ function Header() {
           setValue(4);
         }
         break;
+      case "/estimate":
+        if (value !== 5) {
+          setValue(5);
+        }
+        break;
       default:
         break;
     }
@@ -243,7 +262,13 @@ function Header() {
           className={classes.tab}
         />
       </Tabs>
-      <Button variant="contained" color="secondary" className={classes.button}>
+      <Button
+        // component={Link}
+        // to="/estimate"
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+      >
         Free Estimate
       </Button>
       <Menu
@@ -281,25 +306,141 @@ function Header() {
         onOpen={() => setOpenDrawer(true)}
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
+        classes={{ paper: classes.drawer }}
       >
         <List disablePadding>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/">
-            <ListItemText disableTypography>Home</ListItemText>
+          <ListItem
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(0);
+            }}
+            divider
+            button
+            component={Link}
+            to="/"
+            selected={value === 0}
+          >
+            <ListItemText
+              className={
+                value === 0
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+              disableTypography
+            >
+              Home
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/services">
-            <ListItemText disableTypography>Services</ListItemText>
+          <ListItem
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(1);
+            }}
+            divider
+            button
+            component={Link}
+            to="/services"
+            selected={value === 1}
+          >
+            <ListItemText
+              className={
+                value === 1
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+              disableTypography
+            >
+              Services
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)}  divider button component={Link} to="/revolution">
-            <ListItemText disableTypography>The Revolution</ListItemText>
+          <ListItem
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(2);
+            }}
+            divider
+            button
+            component={Link}
+            to="/revolution"
+            selected={value === 2}
+          >
+            <ListItemText
+              className={
+                value === 2
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+              disableTypography
+            >
+              The Revolution
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/about">
-            <ListItemText disableTypography>About Us</ListItemText>
+          <ListItem
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(3);
+            }}
+            divider
+            button
+            component={Link}
+            to="/about"
+            selected={value === 3}
+          >
+            <ListItemText
+              className={
+                value === 3
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+              disableTypography
+            >
+              About Us
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/contact">
-            <ListItemText disableTypography>Contact Us</ListItemText>
+          <ListItem
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(4);
+            }}
+            divider
+            button
+            component={Link}
+            to="/contact"
+            selected={value === 4}
+          >
+            <ListItemText
+              className={
+                value === 4
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+              disableTypography
+            >
+              Contact Us
+            </ListItemText>
           </ListItem>
-          <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to="/estimate">
-            <ListItemText disableTypography>Free Estimate</ListItemText>
+          <ListItem
+            className={classes.drawerItemEstimate}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(5);
+            }}
+            divider
+            button
+            component={Link}
+            to="/estimate"
+            selected={value === 5}
+          >
+            <ListItemText
+              className={
+                value === 5
+                  ? [classes.drawerItem, classes.drawerItemSelected]
+                  : classes.drawerItem
+              }
+              disableTypography
+            >
+              Free Estimate
+            </ListItemText>
           </ListItem>
         </List>
       </SwipeableDrawer>
