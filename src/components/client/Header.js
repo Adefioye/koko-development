@@ -111,15 +111,13 @@ const useStyles = makeStyles((theme) => ({
     opacity: 1,
   },
   appbar: {
-    zIndex: theme.zIndex.modal + 1
+    zIndex: theme.zIndex.modal + 1,
   },
 }));
 
-function Header() {
-  const [value, setValue] = useState(0);
+function Header(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const classes = useStyles();
@@ -140,12 +138,12 @@ function Header() {
   const handleMenuItemClick = (e, index) => {
     setAnchorEl(null);
     setOpenMenu(false);
-    setSelectedIndex(index);
-    setValue(1);
+    props.setSelectedIndex(index);
+    props.setValue(1);
   };
 
   const handleChange = (e, newValue) => {
-    setValue(newValue);
+    props.setValue(newValue);
   };
 
   const menuOptions = [
@@ -216,10 +214,10 @@ function Header() {
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
         case `${route.link}`:
-          if (value !== route.activeIndex) {
-            setValue(route.activeIndex);
-            if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
-              setSelectedIndex(route.selectedIndex);
+          if (props.value !== route.activeIndex) {
+            props.setValue(route.activeIndex);
+            if (route.selectedIndex && route.selectedIndex !== props.selectedIndex) {
+              props.setSelectedIndex(route.selectedIndex);
             }
           }
           break;
@@ -227,12 +225,12 @@ function Header() {
           break;
       }
     });
-  }, [value, selectedIndex, menuOptions, routes]);
+  }, [props, props.value, props.selectedIndex, menuOptions, routes]);
 
   const tabs = (
     <>
       <Tabs
-        value={value}
+        value={props.value}
         onChange={handleChange}
         className={classes.tabContainer}
         indicatorColor="primary"
@@ -266,7 +264,7 @@ function Header() {
         onClose={handleClose}
         MenuListProps={{ onMouseLeave: handleClose }}
         classes={{ paper: classes.menu }}
-        style={{zIndex: 1302}}
+        style={{ zIndex: 1302 }}
         elevation={0}
       >
         {menuOptions.map((menu, index) => (
@@ -278,7 +276,7 @@ function Header() {
               handleMenuItemClick(e, index);
             }}
             to={menu.link}
-            selected={selectedIndex === index && value === 1}
+            selected={props.selectedIndex === index && props.value === 1}
           >
             {menu.service}
           </MenuItem>
@@ -304,17 +302,17 @@ function Header() {
               key={route.name}
               onClick={() => {
                 setOpenDrawer(false);
-                setValue(route.activeIndex);
+                props.setValue(route.activeIndex);
               }}
               divider
               button
               component={Link}
               to={route.link}
-              selected={value === route.activeIndex}
+              selected={props.value === route.activeIndex}
             >
               <ListItemText
                 className={
-                  value === route.activeIndex
+                  props.value === route.activeIndex
                     ? [classes.drawerItem, classes.drawerItemSelected].join(" ")
                     : classes.drawerItem
                 }
@@ -328,18 +326,18 @@ function Header() {
             className={classes.drawerItemEstimate}
             onClick={() => {
               setOpenDrawer(false);
-              setValue(5);
+              props.setValue(5);
             }}
             divider
             button
             component={Link}
             to="/estimate"
-            selected={value === 5}
+            selected={props.value === 5}
           >
             <ListItemText
               className={
-                value === 5
-                  ? [classes.drawerItem, classes.drawerItemSelected]
+                props.value === 5
+                  ? [classes.drawerItem, classes.drawerItemSelected].join(" ")
                   : classes.drawerItem
               }
               disableTypography
@@ -368,7 +366,7 @@ function Header() {
               className={classes.logoContainer}
               component={Link}
               to="/"
-              onClick={() => setValue(0)}
+              onClick={() => props.setValue(0)}
               disableRipple
             >
               <img className={classes.logo} src={logo} alt="Company logo" />
