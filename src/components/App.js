@@ -5,6 +5,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import Header from "./client/Header";
 import theme from "./client/Theme";
 import Footer from "./client/Footer";
+import LandingPage from "./client/LandingPage";
 
 function App() {
   const [value, setValue] = useState(0);
@@ -22,10 +23,7 @@ function App() {
           />
 
           <Routes>
-            <Route
-              path="/"
-              element={<div style={{ height: "2000px" }}>Home</div>}
-            />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/services" element={<div>Services</div>} />
             <Route path="/customSoftware" element={<div>customSoftware</div>} />
             <Route path="/mobileApps" element={<div>mobileApps</div>} />
