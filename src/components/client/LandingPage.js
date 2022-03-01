@@ -6,9 +6,13 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useTheme from "@material-ui/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 import customSoftwareIcon from "../../assets/Custom Software Icon.svg";
 import mobileAppIcon from "../../assets/mobileIcon.svg";
+import websiteIcon from "../../assets/websiteIcon.svg";
+import revolutionBackground from "../../assets/repeatingBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
   aboutContainer: {
@@ -80,6 +84,27 @@ const useStyles = makeStyles((theme) => ({
       padding: 25,
     },
   },
+  revolutionBackground: {
+    backgroundImage: `url(${revolutionBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100%",
+    width: "100%",
+  },
+  revolutionCard: {
+    position: "absolute",
+    boxShadow: theme.shadows[10],
+    borderRadius: 15,
+    padding: "7em",
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: "5em",
+      paddingBottom: "5em",
+      paddingLeft: 0,
+      paddingRight: 0,
+      borderRadius: 0,
+    },
+  },
 }));
 
 function LandingPage() {
@@ -128,7 +153,7 @@ function LandingPage() {
         <Grid
           container
           style={{ marginLeft: matchesSM ? 0 : "5em" }}
-          justifyContent={matchesSM ? "center" : "undefined"}
+          justifyContent={matchesSM ? "center" : null}
           className={classes.serviceContainer}
           direction="row"
         >
@@ -193,7 +218,7 @@ function LandingPage() {
         <Grid
           container
           style={{ marginLeft: matchesSM ? 0 : "5em" }}
-          justifyContent={matchesSM ? "center" : "undefined"}
+          justifyContent={matchesSM ? "center" : null}
           className={classes.serviceContainer}
           direction="row"
         >
@@ -203,7 +228,7 @@ function LandingPage() {
               Reach more. Discover more. Sell more.
             </Typography>
             <Typography variant="subtitle1" className={classes.subtitle}>
-             Optimized for search engines. built for speed.
+              Optimized for search engines. built for speed.
             </Typography>
             <Button variant="outlined" className={classes.learnButton}>
               <span className={classes.learnMoreText}>Learn More</span>{" "}
@@ -213,10 +238,46 @@ function LandingPage() {
           <Grid item>
             <img
               className={classes.imageIcon}
-              src={customSoftwareIcon}
-              alt="custom software icon"
+              src={websiteIcon}
+              alt="website service icon"
             />
           </Grid>
+        </Grid>
+      </Grid>
+      <Grid item style={{ marginTop: "6em" }}>
+        <Grid
+          justifyContent="center"
+          alignItems="center"
+          style={{ height: "50em" }}
+          item
+          container
+        >
+          <Card className={classes.revolutionCard}>
+            <CardContent>
+              <Grid
+                container
+                style={{ textAlign: "center" }}
+                direction="column"
+              >
+                <Grid item>
+                  <Typography variant="h3" gutterBottom>
+                    The Revolution
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="subtitle1">
+                    Visionary insights coupled with cutting-edge technology is a
+                    recipe for revolution
+                  </Typography>
+                  <Button variant="outlined" className={classes.learnButton}>
+                    <span className={classes.learnMoreText}>Learn More</span>{" "}
+                    <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
+                  </Button>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+          <div className={classes.revolutionBackground} />
         </Grid>
       </Grid>
     </Grid>
