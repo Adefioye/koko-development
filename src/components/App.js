@@ -5,7 +5,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import Header from "./client/Header";
 import theme from "./client/Theme";
 import Footer from "./client/Footer";
-import LandingPage from "./client/LandingPage";
+import LandingPage from "./LandingPage";
 
 function App() {
   const [value, setValue] = useState(0);
