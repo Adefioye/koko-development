@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function LandingPage() {
+function LandingPage({ setValue, setSelectedIndex }) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
@@ -150,6 +150,7 @@ function LandingPage() {
                   to="/estimate"
                   variant="contained"
                   className={classes.estimateButton}
+                  onClick={() => setValue(false)}
                 >
                   Free Estimate
                 </Button>
@@ -160,6 +161,7 @@ function LandingPage() {
                   to="/revolution"
                   variant="outlined"
                   className={classes.learnButtonAbout}
+                  onClick={() => setValue(2)}
                 >
                   <span className={classes.learnMoreText}>Learn More</span>{" "}
                   <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
@@ -193,6 +195,10 @@ function LandingPage() {
               to="/customSoftware"
               variant="outlined"
               className={classes.learnButton}
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(1);
+              }}
             >
               <span className={classes.learnMoreText}>Learn More</span>{" "}
               <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
@@ -230,6 +236,10 @@ function LandingPage() {
               to="/mobileApps"
               variant="outlined"
               className={classes.learnButton}
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(2);
+              }}
             >
               <span className={classes.learnMoreText}>Learn More</span>{" "}
               <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
@@ -267,6 +277,10 @@ function LandingPage() {
               to="/websites"
               variant="outlined"
               className={classes.learnButton}
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(3);
+              }}
             >
               <span className={classes.learnMoreText}>Learn More</span>{" "}
               <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
@@ -313,6 +327,9 @@ function LandingPage() {
                     to="/revolution"
                     variant="outlined"
                     className={classes.learnButton}
+                    onClick={() => {
+                      setValue(2);
+                    }}
                   >
                     <span className={classes.learnMoreText}>Learn More</span>{" "}
                     <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
@@ -362,6 +379,9 @@ function LandingPage() {
                     style={{ borderColor: "white", color: "white" }}
                     variant="outlined"
                     className={classes.learnButton}
+                    onClick={() => {
+                      setValue(3);
+                    }}
                   >
                     <span className={classes.learnMoreText}>Learn More</span>{" "}
                     <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
@@ -391,6 +411,9 @@ function LandingPage() {
                     style={{ borderColor: "white", color: "white" }}
                     variant="outlined"
                     className={classes.learnButton}
+                    onClick={() => {
+                      setValue(4);
+                    }}
                   >
                     <span className={classes.learnMoreText}>Learn More</span>{" "}
                     <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
@@ -404,7 +427,7 @@ function LandingPage() {
         </Grid>
       </Grid>
       <Grid item>
-        <CallToAction />
+        <CallToAction setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </Grid>
     </Grid>
   );

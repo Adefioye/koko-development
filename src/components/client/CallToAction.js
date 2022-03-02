@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 import background from "../../assets/background.jpg";
 import mobileBackground from "../../assets/mobileBackground.jpg";
-import { matches } from "lodash";
 
 const useStyles = makeStyles((theme) => ({
   learnButton: {
@@ -56,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CallToAction() {
+export default function CallToAction({ setValue, setSelectedIndex }) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
@@ -98,6 +97,9 @@ export default function CallToAction() {
                 to="/revolution"
                 variant="outlined"
                 className={classes.learnButton}
+                onClick={() => {
+                  setValue(2);
+                }}
               >
                 <span className={classes.learnMoreText}>Learn More</span>{" "}
                 <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
@@ -113,6 +115,9 @@ export default function CallToAction() {
           variant="contained"
           color="secondary"
           className={classes.estimateButton}
+          onClick={() => {
+            setValue(false);
+          }}
         >
           Free Estimate
         </Button>
