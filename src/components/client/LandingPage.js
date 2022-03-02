@@ -13,6 +13,7 @@ import customSoftwareIcon from "../../assets/Custom Software Icon.svg";
 import mobileAppIcon from "../../assets/mobileIcon.svg";
 import websiteIcon from "../../assets/websiteIcon.svg";
 import revolutionBackground from "../../assets/repeatingBackground.svg";
+import infoBackground from "../../assets/infoBackground.svg";
 
 const useStyles = makeStyles((theme) => ({
   aboutContainer: {
@@ -105,12 +106,21 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 0,
     },
   },
+  infoBackground: {
+    backgroundImage: `url(${infoBackground})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "100%",
+    width: "100%",
+  },
 }));
 
 function LandingPage() {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <Grid container direction="column">
@@ -214,7 +224,7 @@ function LandingPage() {
       </Grid>
       <Grid item>
         {" "}
-        {/* Custom software block */}
+        {/* Website development block */}
         <Grid
           container
           style={{ marginLeft: matchesSM ? 0 : "5em" }}
@@ -245,6 +255,8 @@ function LandingPage() {
         </Grid>
       </Grid>
       <Grid item style={{ marginTop: "6em" }}>
+        {" "}
+        {/* Revolution block */}
         <Grid
           justifyContent="center"
           alignItems="center"
@@ -278,6 +290,79 @@ function LandingPage() {
             </CardContent>
           </Card>
           <div className={classes.revolutionBackground} />
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid
+          container
+          style={{ height: "50em" }}
+          alignItems="center"
+          direction="row"
+        >
+          <Grid
+            container
+            item
+            style={{ position: "absolute", justifyContent: "space-between" }}
+            direction={matchesSM ? "column" : "row"}
+            spacing={matchesXS ? 10 : 0}
+          >
+            <Grid
+              sm
+              item
+              style={{
+                marginLeft: matchesXS ? 0 : matchesSM ? "2em" : "5em",
+                textAlign: matchesXS ? "center" : "inherit",
+              }}
+            >
+              <Grid container direction="column">
+                <Typography variant="h2" style={{ color: "white" }}>
+                  About Us
+                </Typography>
+                <Typography variant="subtitle2" style={{ color: "white" }}>
+                  Let's get personal.
+                </Typography>
+                <Grid item>
+                  <Button
+                    style={{ borderColor: "white", color: "white" }}
+                    variant="outlined"
+                    className={classes.learnButton}
+                  >
+                    <span className={classes.learnMoreText}>Learn More</span>{" "}
+                    <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid
+              sm
+              item
+              style={{
+                marginRight: matchesXS ? 0 : matchesSM ? "2em" : "5em",
+                textAlign: matchesXS ? "center" : "right",
+              }}
+            >
+              <Grid container direction="column">
+                <Typography variant="h2" style={{ color: "white" }}>
+                  Contact Us
+                </Typography>
+                <Typography variant="subtitle2" style={{ color: "white" }}>
+                  Say hello!
+                </Typography>
+                <Grid item>
+                  <Button
+                    style={{ borderColor: "white", color: "white" }}
+                    variant="outlined"
+                    className={classes.learnButton}
+                  >
+                    <span className={classes.learnMoreText}>Learn More</span>{" "}
+                    <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <div className={classes.infoBackground} />
         </Grid>
       </Grid>
     </Grid>
