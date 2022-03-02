@@ -8,6 +8,7 @@ import useTheme from "@material-ui/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import { Link } from "react-router-dom";
 
 import customSoftwareIcon from "../assets/Custom Software Icon.svg";
 import mobileAppIcon from "../assets/mobileIcon.svg";
@@ -144,12 +145,22 @@ function LandingPage() {
           <Grid item>
             <Grid container className={classes.buttonContainer}>
               <Grid item>
-                <Button variant="contained" className={classes.estimateButton}>
+                <Button
+                  component={Link}
+                  to="/estimate"
+                  variant="contained"
+                  className={classes.estimateButton}
+                >
                   Free Estimate
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" className={classes.learnButtonAbout}>
+                <Button
+                  component={Link}
+                  to="/revolution"
+                  variant="outlined"
+                  className={classes.learnButtonAbout}
+                >
                   <span className={classes.learnMoreText}>Learn More</span>{" "}
                   <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
                 </Button>
@@ -177,7 +188,12 @@ function LandingPage() {
               Complete digital solutions, from investigation to{" "}
               <span className={classes.specialText}>celebration</span>
             </Typography>
-            <Button variant="outlined" className={classes.learnButton}>
+            <Button
+              component={Link}
+              to="/customSoftware"
+              variant="outlined"
+              className={classes.learnButton}
+            >
               <span className={classes.learnMoreText}>Learn More</span>{" "}
               <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
             </Button>
@@ -209,7 +225,12 @@ function LandingPage() {
               Integrate your web experience or create a standalone app with
               either mobile platform
             </Typography>
-            <Button variant="outlined" className={classes.learnButton}>
+            <Button
+              component={Link}
+              to="/mobileApps"
+              variant="outlined"
+              className={classes.learnButton}
+            >
               <span className={classes.learnMoreText}>Learn More</span>{" "}
               <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
             </Button>
@@ -241,7 +262,12 @@ function LandingPage() {
             <Typography variant="subtitle1" className={classes.subtitle}>
               Optimized for search engines. built for speed.
             </Typography>
-            <Button variant="outlined" className={classes.learnButton}>
+            <Button
+              component={Link}
+              to="/websites"
+              variant="outlined"
+              className={classes.learnButton}
+            >
               <span className={classes.learnMoreText}>Learn More</span>{" "}
               <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
             </Button>
@@ -282,7 +308,12 @@ function LandingPage() {
                     Visionary insights coupled with cutting-edge technology is a
                     recipe for revolution
                   </Typography>
-                  <Button variant="outlined" className={classes.learnButton}>
+                  <Button
+                    component={Link}
+                    to="/revolution"
+                    variant="outlined"
+                    className={classes.learnButton}
+                  >
                     <span className={classes.learnMoreText}>Learn More</span>{" "}
                     <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
                   </Button>
@@ -294,6 +325,8 @@ function LandingPage() {
         </Grid>
       </Grid>
       <Grid item>
+        {" "}
+        {/*Information block*/}
         <Grid
           container
           style={{ height: "50em" }}
@@ -324,6 +357,8 @@ function LandingPage() {
                 </Typography>
                 <Grid item>
                   <Button
+                    component={Link}
+                    to="/about"
                     style={{ borderColor: "white", color: "white" }}
                     variant="outlined"
                     className={classes.learnButton}
@@ -351,6 +386,8 @@ function LandingPage() {
                 </Typography>
                 <Grid item>
                   <Button
+                    component={Link}
+                    to="/contact"
                     style={{ borderColor: "white", color: "white" }}
                     variant="outlined"
                     className={classes.learnButton}

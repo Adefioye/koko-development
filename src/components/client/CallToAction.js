@@ -5,6 +5,7 @@ import { makeStyles, useTheme } from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { Link } from "react-router-dom";
 
 import background from "../../assets/background.jpg";
 import mobileBackground from "../../assets/mobileBackground.jpg";
@@ -92,7 +93,12 @@ export default function CallToAction() {
               item
               style={{ justifyContent: matchesSM ? "center" : "inherit" }}
             >
-              <Button variant="outlined" className={classes.learnButton}>
+              <Button
+                component={Link}
+                to="/revolution"
+                variant="outlined"
+                className={classes.learnButton}
+              >
                 <span className={classes.learnMoreText}>Learn More</span>{" "}
                 <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
               </Button>
@@ -102,6 +108,8 @@ export default function CallToAction() {
       </Grid>
       <Grid item>
         <Button
+          component={Link}
+          to="/estimate"
           variant="contained"
           color="secondary"
           className={classes.estimateButton}

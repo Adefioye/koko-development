@@ -219,9 +219,17 @@ function Header(props) {
         case `${route.link}`:
           if (props.value !== route.activeIndex) {
             props.setValue(route.activeIndex);
-            if (route.selectedIndex && route.selectedIndex !== props.selectedIndex) {
+            if (
+              route.selectedIndex &&
+              route.selectedIndex !== props.selectedIndex
+            ) {
               props.setSelectedIndex(route.selectedIndex);
             }
+          }
+          break;
+        case "/estimate":
+          if (props.value !== 5) {
+            props.setValue(false);
           }
           break;
         default:
@@ -252,11 +260,12 @@ function Header(props) {
         ))}
       </Tabs>
       <Button
-        // component={Link}
-        // to="/estimate"
+        component={Link}
+        to="/estimate"
         variant="contained"
         color="secondary"
         className={classes.button}
+        onClick={() => props.setValue(false)}
       >
         Free Estimate
       </Button>
