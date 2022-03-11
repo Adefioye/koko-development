@@ -48,6 +48,11 @@ export default createMuiTheme({
       color: arcBlue,
       fontSize: "1.75rem",
     },
+    body1: {
+      fontSize: "1.25rem",
+      color: arcGrey,
+      fontWeight: 300
+    },
     subtitle1: {
       fontSize: "1.25rem",
       fontWeight: 300,
@@ -61,6 +66,10 @@ export default createMuiTheme({
       fontFamily: "Roboto",
       fontWeight: "bold",
       color: arcBlue,
+    },
+    navigateArrow: {
+      color: arcBlue,
+      backgroundColor: "transparent",
     },
   },
 });
