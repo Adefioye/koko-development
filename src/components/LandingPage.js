@@ -222,7 +222,7 @@ function LandingPage({ setValue, setSelectedIndex }) {
           className={classes.serviceContainer}
           direction="row"
         >
-          <Grid item>
+          <Grid item style={{width: matchesSM ? null : "35em"}}>
             <Typography variant="h4">Mobile App Development</Typography>
             <Typography variant="subtitle1" className={classes.subtitle}>
               Extend Functionality. Extend Access. Increase Engagement.

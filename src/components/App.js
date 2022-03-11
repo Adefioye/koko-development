@@ -6,6 +6,7 @@ import Header from "./client/Header";
 import theme from "./client/Theme";
 import Footer from "./client/Footer";
 import LandingPage from "./LandingPage";
+import Services from "./Services";
 
 function App() {
   const [value, setValue] = useState(0);
@@ -32,7 +33,15 @@ function App() {
                 />
               }
             />
-            <Route path="/services" element={<div>Services</div>} />
+            <Route
+              path="/services"
+              element={
+                <Services
+                  setValue={setValue}
+                  setSelectedIndex={setSelectedIndex}
+                />
+              }
+            />
             <Route path="/customSoftware" element={<div>customSoftware</div>} />
             <Route path="/mobileApps" element={<div>mobileApps</div>} />
             <Route path="/websites" element={<div>websites</div>} />
