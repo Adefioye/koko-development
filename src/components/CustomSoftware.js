@@ -45,6 +45,7 @@ export default function CustomSoftware({ setValue, setSelectedIndex }) {
 
   return (
     <Grid container direction="column">
+      {/* Custom software development introduction*/}
       <Grid
         item
         container
@@ -53,13 +54,8 @@ export default function CustomSoftware({ setValue, setSelectedIndex }) {
         className={classes.rowContainer}
         justifyContent="space-between"
       >
-        {" "}
-        {/* Custom software development introduction*/}
         <Hidden mdDown>
-          <Grid
-            item
-            className={classes.arrowContainer}
-          >
+          <Grid item className={classes.arrowContainer}>
             {" "}
             {/*Backward Arrow*/}
             <IconButton
@@ -77,13 +73,7 @@ export default function CustomSoftware({ setValue, setSelectedIndex }) {
         </Hidden>
         <Grid item container direction="column" className={classes.heading}>
           <Grid item>
-            <Typography
-              variant="h2"
-              align={matchesMD ? "center" : "inherit"}
-              style={{
-                fontSize: matchesMD ? "1.5rem" : null,
-              }}
-            >
+            <Typography variant="h2" align={matchesMD ? "center" : "inherit"}>
               Custom Software Development
             </Typography>
           </Grid>
@@ -151,7 +141,7 @@ export default function CustomSoftware({ setValue, setSelectedIndex }) {
         container
         direction="row"
         justifyContent="center"
-        style={{ marginTop: "10em", marginBottom: "15em" }}
+        style={{ marginTop: "10em", marginBottom: "10em" }}
         className={classes.rowContainer}
       >
         <Grid
@@ -175,8 +165,8 @@ export default function CustomSoftware({ setValue, setSelectedIndex }) {
           direction="column"
           style={{
             maxWidth: "40em",
-            marginTop: matchesMD ? "2em" : null,
-            marginBottom: matchesMD ? "2em" : null,
+            marginTop: matchesMD ? "5em" : null,
+            marginBottom: matchesMD ? "5em" : null,
           }}
           alignItems="center"
           md
@@ -276,7 +266,7 @@ export default function CustomSoftware({ setValue, setSelectedIndex }) {
         item
         container
         justifyContent="center"
-        style={{ marginTop: "15em" }}
+        style={{ marginTop: "10em" }}
         direction="row"
         className={classes.rowContainer}
       >
@@ -318,7 +308,7 @@ export default function CustomSoftware({ setValue, setSelectedIndex }) {
         item
         container
         direction="row"
-        style={{ marginTop: "15em" }}
+        style={{ marginTop: "10em" }}
         justifyContent="space-between"
         className={classes.rowContainer}
       >
@@ -394,7 +384,7 @@ export default function CustomSoftware({ setValue, setSelectedIndex }) {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item style={{ marginTop: "15em" }}>
+      <Grid item style={{ marginTop: "10em" }}>
         <CallToAction setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </Grid>
     </Grid>

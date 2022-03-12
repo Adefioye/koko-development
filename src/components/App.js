@@ -8,6 +8,7 @@ import Footer from "./client/Footer";
 import LandingPage from "./LandingPage";
 import Services from "./Services";
 import CustomSoftware from "./CustomSoftware";
+import MobileApps from "./MobileApps";
 
 function App() {
   const [value, setValue] = useState(0);
@@ -52,7 +53,15 @@ function App() {
                 />
               }
             />
-            <Route path="/mobileApps" element={<div>mobileApps</div>} />
+            <Route
+              path="/mobileApps"
+              element={
+                <MobileApps
+                  setValue={setValue}
+                  setSelectedIndex={setSelectedIndex}
+                />
+              }
+            />
             <Route path="/websites" element={<div>websites</div>} />
             <Route path="/revolution" element={<div>revolution</div>} />
             <Route path="/about" element={<div>about</div>} />
