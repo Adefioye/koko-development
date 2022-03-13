@@ -60,7 +60,7 @@ export default function MobileApps({ setValue, setSelectedIndex }) {
             {/*Backward Arrow*/}
             <IconButton
               onClick={() => {
-                setSelectedIndex(0);
+                setSelectedIndex(1);
               }}
               component={Link}
               to="/customSoftware"
@@ -111,7 +111,7 @@ export default function MobileApps({ setValue, setSelectedIndex }) {
             {/*Forward Arrow*/}
             <IconButton
               onClick={() => {
-                setSelectedIndex(2);
+                setSelectedIndex(3);
               }}
               component={Link}
               to="/websites"
