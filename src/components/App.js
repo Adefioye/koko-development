@@ -11,6 +11,7 @@ import CustomSoftware from "./CustomSoftware";
 import MobileApps from "./MobileApps";
 import Websites from "./Websites";
 import Revolution from "./Revolution";
+import About from "./About";
 
 function App() {
   const [value, setValue] = useState(0);
@@ -82,7 +83,15 @@ function App() {
                 />
               }
             />
-            <Route path="/about" element={<div>about</div>} />
+            <Route
+              path="/about"
+              element={
+                <About
+                  setValue={setValue}
+                  setSelectedIndex={setSelectedIndex}
+                />
+              }
+            />
             <Route path="/contact" element={<div>contact</div>} />
             <Route path="/estimate" element={<div>estimate</div>} />
           </Routes>

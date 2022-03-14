@@ -27,10 +27,6 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: "1em",
       paddingRight: "1em",
     },
-    [theme.breakpoints.down("xs")]: {
-      paddingLeft: "1em",
-      paddingRight: "1em",
-    },
   },
 }));
 
