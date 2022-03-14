@@ -10,6 +10,7 @@ import Services from "./Services";
 import CustomSoftware from "./CustomSoftware";
 import MobileApps from "./MobileApps";
 import Websites from "./Websites";
+import Revolution from "./Revolution";
 
 function App() {
   const [value, setValue] = useState(0);
@@ -72,7 +73,15 @@ function App() {
                 />
               }
             />
-            <Route path="/revolution" element={<div>revolution</div>} />
+            <Route
+              path="/revolution"
+              element={
+                <Revolution
+                  setValue={setValue}
+                  setSelectedIndex={setSelectedIndex}
+                />
+              }
+            />
             <Route path="/about" element={<div>about</div>} />
             <Route path="/contact" element={<div>contact</div>} />
             <Route path="/estimate" element={<div>estimate</div>} />
