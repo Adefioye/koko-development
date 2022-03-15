@@ -78,14 +78,53 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Contact({ setValue, setSelectedIndex }) {
   const [name, setName] = useState("");
+
   const [email, setEmail] = useState("");
+  const [emailHelper, setEmailHelper] = useState("");
+
   const [phone, setPhone] = useState("");
+  const [phoneHelper, setPhoneHelper] = useState("");
+
   const [message, setMessage] = useState("");
 
   const classes = useStyles();
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const handleChange = (e) => {
+    let valid;
+
+    switch (e.target.id) {
+      case "email":
+        setEmail(e.target.value);
+        valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+          e.target.value
+        );
+
+        if (!valid) {
+          setEmailHelper("Invalid email entry");
+        } else {
+          setEmailHelper("");
+        }
+        break;
+      case "phone":
+        setPhone(e.target.value);
+        valid =
+          /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/.test(
+            e.target.value
+          );
+
+        if (!valid) {
+          setPhoneHelper("Invalid phone entry, Please add your country code!");
+        } else {
+          setPhoneHelper("");
+        }
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <Grid container direction="row">
@@ -138,7 +177,12 @@ export default function Contact({ setValue, setSelectedIndex }) {
                   variant="body1"
                   style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
                 >
-                  (555) 555-5555
+                  <a
+                    href="tel:5555555555"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    (555) 555-5555
+                  </a>
                 </Typography>
               </Grid>
             </Grid>
@@ -155,7 +199,12 @@ export default function Contact({ setValue, setSelectedIndex }) {
                   variant="body1"
                   style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
                 >
-                  kevalaramid@gmail.com
+                  <a
+                    href="mailto:abdulhakeemadefioye@gmail.com"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    abdulhakeemadefioye@gmail.com
+                  </a>
                 </Typography>
               </Grid>
             </Grid>
@@ -176,19 +225,23 @@ export default function Contact({ setValue, setSelectedIndex }) {
               </Grid>
               <Grid item style={{ marginBottom: "0.5em" }}>
                 <TextField
+                  error={phoneHelper.length !== 0}
+                  helperText={phoneHelper}
                   label="Phone"
                   id="phone"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={handleChange}
                   fullWidth
                 />
               </Grid>
               <Grid item style={{ marginBottom: "0.5em" }}>
                 <TextField
+                  error={emailHelper.length !== 0}
+                  helperText={emailHelper}
                   label="Email"
                   id="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={handleChange}
                   fullWidth
                 />
               </Grid>
@@ -210,7 +263,18 @@ export default function Contact({ setValue, setSelectedIndex }) {
                 justifyContent="center"
                 style={{ marginTop: "2em" }}
               >
-                <Button variant="contained" className={classes.sendText}>
+                <Button
+                  disabled={
+                    name.length === 0 ||
+                    email.length === 0 ||
+                    phone.length === 0 ||
+                    message.length === 0 ||
+                    emailHelper.length !== 0 ||
+                    phoneHelper.length !== 0
+                  }
+                  variant="contained"
+                  className={classes.sendText}
+                >
                   Send Message <img src={airplane} alt="paper plane" />
                 </Button>
               </Grid>
