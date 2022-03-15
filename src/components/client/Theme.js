@@ -51,7 +51,7 @@ export default createMuiTheme({
     body1: {
       fontSize: "1.25rem",
       color: arcGrey,
-      fontWeight: 300
+      fontWeight: 300,
     },
     subtitle1: {
       fontSize: "1.25rem",
@@ -70,6 +70,28 @@ export default createMuiTheme({
     navigateArrow: {
       color: arcBlue,
       backgroundColor: "transparent",
+    },
+  },
+  overrides: {
+    MuiInputLabel: {
+      root: {
+        color: arcBlue,
+        fontSize: "1rem",
+      },
+    },
+    MuiInput: {
+      root: {
+        color: arcGrey,
+        fontWeight: 300,
+      },
+      underline: {
+        "&:before": {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+        "&:hover:not($disabled):not($focused):not($error):before": {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+      },
     },
   },
 });

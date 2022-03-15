@@ -12,6 +12,7 @@ import MobileApps from "./MobileApps";
 import Websites from "./Websites";
 import Revolution from "./Revolution";
 import About from "./About";
+import Contact from "./Contact";
 
 function App() {
   const [value, setValue] = useState(0);
@@ -92,7 +93,15 @@ function App() {
                 />
               }
             />
-            <Route path="/contact" element={<div>contact</div>} />
+            <Route
+              path="/contact"
+              element={
+                <Contact
+                  setValue={setValue}
+                  setSelectedIndex={setSelectedIndex}
+                />
+              }
+            />
             <Route path="/estimate" element={<div>estimate</div>} />
           </Routes>
 

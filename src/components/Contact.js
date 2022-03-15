@@ -1,0 +1,288 @@
+import React, { useState } from "react";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { Link } from "react-router-dom";
+
+import phoneIcon from "../assets/phone.svg";
+import emailIcon from "../assets/email.svg";
+import background from "../assets/background.jpg";
+import mobileBackground from "../assets/mobileBackground.jpg";
+import airplane from "../assets/send.svg";
+
+const useStyles = makeStyles((theme) => ({
+  background: {
+    backgroundImage: `url(${background})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    height: "60em",
+    paddingBottom: "10em",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${mobileBackground})`,
+    },
+  },
+  learnButton: {
+    ...theme.typography.learnButton,
+    fontSize: "0.7em",
+    height: 35,
+    padding: 5,
+    [theme.breakpoints.down("md")]: {
+      marginTop: "2em",
+    },
+  },
+  learnMoreText: {
+    marginRight: "0.5em",
+  },
+  learnMoreArrowIcon: {
+    fontSize: "1.5em",
+  },
+  estimateButton: {
+    ...theme.typography.estimate,
+    width: 145,
+    height: 45,
+    backgroundColor: theme.palette.common.orange,
+    borderRadius: 50,
+    marginRight: "5em",
+    marginLeft: "2em",
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.light,
+    },
+    [theme.breakpoints.down("md")]: {
+      marginLeft: 0,
+      marginRight: 0,
+      marginTop: "2em",
+    },
+  },
+  sendText: {
+    ...theme.typography.estimate,
+    borderRadius: 50,
+    width: 200,
+    height: 45,
+    fontSize: "1rem",
+    backgroundColor: theme.palette.common.orange,
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.light,
+    },
+  },
+  message: {
+    border: `2px solid ${theme.palette.common.blue}`,
+    borderRadius: 5,
+    marginTop: "5em",
+  },
+}));
+
+export default function Contact({ setValue, setSelectedIndex }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
+  const classes = useStyles();
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+
+  return (
+    <Grid container direction="row">
+      {/*Contact form*/}
+      <Grid
+        item
+        container
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        lg={4}
+        xl={3}
+      >
+        <Grid item>
+          <Grid
+            container
+            direction="column"
+            style={{
+              marginTop: matchesSM ? "2em" : matchesMD ? "5em" : null,
+              marginBottom: matchesMD ? "5em" : null,
+            }}
+          >
+            <Grid item>
+              <Typography
+                align={matchesMD ? "center" : "inherit"}
+                variant="h2"
+                style={{ lineHeight: 1 }}
+              >
+                {" "}
+                Contact Us
+              </Typography>
+              <Typography
+                align={matchesMD ? "center" : "inherit"}
+                variant="body1"
+                style={{ color: theme.palette.common.blue }}
+              >
+                We're waiting
+              </Typography>
+            </Grid>
+            <Grid item container style={{ marginTop: "2em" }}>
+              <Grid item>
+                <img
+                  src={phoneIcon}
+                  alt="phone icon"
+                  style={{ marginRight: "0.5em", verticalAlign: "bottom" }}
+                />
+              </Grid>
+              <Grid item>
+                <Typography
+                  variant="body1"
+                  style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
+                >
+                  (555) 555-5555
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item container style={{ marginBottom: "2em" }}>
+              <Grid item verticalAlign="bottom">
+                <img
+                  src={emailIcon}
+                  alt="email icon"
+                  style={{ marginRight: "0.5em", verticalAlign: "bottom" }}
+                />
+              </Grid>
+              <Grid item>
+                <Typography
+                  variant="body1"
+                  style={{ color: theme.palette.common.blue, fontSize: "1rem" }}
+                >
+                  kevalaramid@gmail.com
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid
+              item
+              container
+              direction="column"
+              style={{ maxWidth: "20em" }}
+            >
+              <Grid item style={{ marginBottom: "0.5em" }}>
+                <TextField
+                  label="Name"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ marginBottom: "0.5em" }}>
+                <TextField
+                  label="Phone"
+                  id="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ marginBottom: "0.5em" }}>
+                <TextField
+                  label="Email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  InputProps={{ disableUnderline: true }}
+                  id="message"
+                  multiline
+                  minRows={10}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className={classes.message}
+                  fullWidth
+                />
+              </Grid>
+              <Grid
+                item
+                container
+                justifyContent="center"
+                style={{ marginTop: "2em" }}
+              >
+                <Button variant="contained" className={classes.sendText}>
+                  Send Message <img src={airplane} alt="paper plane" />
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      {/* Call To action */}
+      <Grid
+        item
+        container
+        direction={matchesMD ? "column" : "row"}
+        justifyContent={matchesMD ? "center" : null}
+        alignItems="center"
+        className={classes.background}
+        lg={8}
+        xl={9}
+      >
+        <Grid item style={{ marginLeft: matchesMD ? 0 : "3em" }}>
+          <Grid
+            container
+            style={{ textAlign: matchesMD ? "center" : null }}
+            direction="column"
+          >
+            <Grid item>
+              <Typography variant="h2">
+                Simple Software.
+                <br />
+                Revolutionary Results
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                style={{ color: "white", fontSize: "1.25rem" }}
+              >
+                Take advantage of the 21st Century.
+              </Typography>
+              <Grid
+                container
+                item
+                style={{ justifyContent: matchesMD ? "center" : "inherit" }}
+              >
+                <Button
+                  component={Link}
+                  to="/revolution"
+                  variant="outlined"
+                  className={classes.learnButton}
+                  onClick={() => {
+                    setValue(2);
+                  }}
+                >
+                  <span className={classes.learnMoreText}>Learn More</span>{" "}
+                  <ArrowRightAltIcon className={classes.learnMoreArrowIcon} />{" "}
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
+          <Button
+            component={Link}
+            to="/estimate"
+            variant="contained"
+            color="secondary"
+            className={classes.estimateButton}
+            onClick={() => {
+              setValue(false);
+            }}
+          >
+            Free Estimate
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+}
