@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Link } from "react-router-dom";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
 
 import phoneIcon from "../assets/phone.svg";
 import emailIcon from "../assets/email.svg";
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "60em",
+    height: "50em",
     paddingBottom: "10em",
     [theme.breakpoints.down("md")]: {
       backgroundImage: `url(${mobileBackground})`,
@@ -87,10 +89,13 @@ export default function Contact({ setValue, setSelectedIndex }) {
 
   const [message, setMessage] = useState("");
 
+  const [open, setOpen] = useState(false);
+
   const classes = useStyles();
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
 
   const handleChange = (e) => {
     let valid;
@@ -129,21 +134,13 @@ export default function Contact({ setValue, setSelectedIndex }) {
   return (
     <Grid container direction="row">
       {/*Contact form*/}
-      <Grid
-        item
-        container
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        lg={4}
-        xl={3}
-      >
+      <Grid item container direction="column" alignItems="center" lg={4} xl={3}>
         <Grid item>
           <Grid
             container
             direction="column"
             style={{
-              marginTop: matchesSM ? "2em" : matchesMD ? "5em" : null,
+              marginTop: "2em",
               marginBottom: matchesMD ? "5em" : null,
             }}
           >
@@ -250,7 +247,7 @@ export default function Contact({ setValue, setSelectedIndex }) {
                   InputProps={{ disableUnderline: true }}
                   id="message"
                   multiline
-                  minRows={10}
+                  minRows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className={classes.message}
@@ -274,6 +271,7 @@ export default function Contact({ setValue, setSelectedIndex }) {
                   }
                   variant="contained"
                   className={classes.sendText}
+                  onClick={() => setOpen(true)}
                 >
                   Send Message <img src={airplane} alt="paper plane" />
                 </Button>
@@ -282,6 +280,124 @@ export default function Contact({ setValue, setSelectedIndex }) {
           </Grid>
         </Grid>
       </Grid>
+      {/* Section to show Dialog content*/}
+      <Dialog
+        style={{ zIndex: 1302 }}
+        open={open}
+        fullScreen={matchesXS ? "100%" : null}
+        onClose={() => setOpen(false)}
+        PaperProps={{
+          style: {
+            paddingTop: matchesMD ? "1em" : "5em",
+            paddingBottom: matchesMD ? "1em" : "5em",
+            paddingLeft: matchesXS
+              ? 0
+              : matchesSM
+              ? "5em"
+              : matchesMD
+              ? "10em"
+              : "20em",
+            paddingRight: matchesXS
+              ? 0
+              : matchesSM
+              ? "5em"
+              : matchesMD
+              ? "10em"
+              : "20em",
+          },
+        }}
+      >
+        <DialogContent>
+          <Grid container direction="column">
+            <Grid item>
+              <Typography align="center" variant="h4">
+                Confirm message
+              </Typography>
+            </Grid>
+            <Grid item container direction="column">
+              <Grid item style={{ marginBottom: "0.5em" }}>
+                <TextField
+                  label="Name"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ marginBottom: "0.5em" }}>
+                <TextField
+                  error={phoneHelper.length !== 0}
+                  helperText={phoneHelper}
+                  label="Phone"
+                  id="phone"
+                  value={phone}
+                  onChange={handleChange}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item style={{ marginBottom: "0.5em" }}>
+                <TextField
+                  error={emailHelper.length !== 0}
+                  helperText={emailHelper}
+                  label="Email"
+                  id="email"
+                  value={email}
+                  onChange={handleChange}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  InputProps={{ disableUnderline: true }}
+                  id="message"
+                  multiline
+                  minRows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className={classes.message}
+                  fullWidth
+                />
+              </Grid>
+            </Grid>
+            <Grid
+              item
+              container
+              alignItems="center"
+              justifyContent="center"
+              direction={matchesSM ? "column" : "row"}
+              style={{ marginTop: "2em" }}
+            >
+              <Grid item style={{ marginBottom: matchesSM ? "1em" : 0 }}>
+                <Button
+                  style={{ fontWeight: 300 }}
+                  color="primary"
+                  onClick={() => setOpen(false)}
+                >
+                  Cancel
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  disabled={
+                    name.length === 0 ||
+                    email.length === 0 ||
+                    phone.length === 0 ||
+                    message.length === 0 ||
+                    emailHelper.length !== 0 ||
+                    phoneHelper.length !== 0
+                  }
+                  variant="contained"
+                  className={classes.sendText}
+                  onClick={() => setOpen(true)}
+                >
+                  Send Message <img src={airplane} alt="paper plane" />
+                </Button>
+              </Grid>
+            </Grid>
+          </Grid>
+        </DialogContent>
+      </Dialog>
+
       {/* Call To action */}
       <Grid
         item
