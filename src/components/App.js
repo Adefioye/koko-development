@@ -13,6 +13,7 @@ import Websites from "./Websites";
 import Revolution from "./Revolution";
 import About from "./About";
 import Contact from "./Contact";
+import Estimate from "./Estimate";
 
 function App() {
   const [value, setValue] = useState(0);
@@ -102,7 +103,15 @@ function App() {
                 />
               }
             />
-            <Route path="/estimate" element={<div>estimate</div>} />
+            <Route
+              path="/estimate"
+              element={
+                <Estimate
+                  setValue={setValue}
+                  setSelectedIndex={setSelectedIndex}
+                />
+              }
+            />
           </Routes>
 
           <Footer

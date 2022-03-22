@@ -48,6 +48,12 @@ export default createMuiTheme({
       color: arcBlue,
       fontSize: "1.75rem",
     },
+    h6: {
+      fontWeight: 500,
+      fontFamily: "Raleway",
+      lineHeight: 1,
+      color: arcBlue,
+    },
     body1: {
       fontSize: "1.25rem",
       color: arcGrey,
