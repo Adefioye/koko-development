@@ -261,14 +261,14 @@ export default function Contact({ setValue, setSelectedIndex }) {
                 style={{ marginTop: "2em" }}
               >
                 <Button
-                  disabled={
-                    name.length === 0 ||
-                    email.length === 0 ||
-                    phone.length === 0 ||
-                    message.length === 0 ||
-                    emailHelper.length !== 0 ||
-                    phoneHelper.length !== 0
-                  }
+                  // disabled={
+                  //   name.length === 0 ||
+                  //   email.length === 0 ||
+                  //   phone.length === 0 ||
+                  //   message.length === 0 ||
+                  //   emailHelper.length !== 0 ||
+                  //   phoneHelper.length !== 0
+                  // }
                   variant="contained"
                   className={classes.sendText}
                   onClick={() => setOpen(true)}
@@ -314,50 +314,48 @@ export default function Contact({ setValue, setSelectedIndex }) {
                 Confirm message
               </Typography>
             </Grid>
-            <Grid item container direction="column">
-              <Grid item style={{ marginBottom: "0.5em" }}>
-                <TextField
-                  label="Name"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item style={{ marginBottom: "0.5em" }}>
-                <TextField
-                  error={phoneHelper.length !== 0}
-                  helperText={phoneHelper}
-                  label="Phone"
-                  id="phone"
-                  value={phone}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item style={{ marginBottom: "0.5em" }}>
-                <TextField
-                  error={emailHelper.length !== 0}
-                  helperText={emailHelper}
-                  label="Email"
-                  id="email"
-                  value={email}
-                  onChange={handleChange}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item>
-                <TextField
-                  InputProps={{ disableUnderline: true }}
-                  id="message"
-                  multiline
-                  minRows={5}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className={classes.message}
-                  fullWidth
-                />
-              </Grid>
+            <Grid item style={{ marginBottom: "0.5em" }}>
+              <TextField
+                label="Name"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                fullWidth
+              />
+            </Grid>
+            <Grid item style={{ marginBottom: "0.5em" }}>
+              <TextField
+                error={phoneHelper.length !== 0}
+                helperText={phoneHelper}
+                label="Phone"
+                id="phone"
+                value={phone}
+                onChange={handleChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item style={{ marginBottom: "0.5em" }}>
+              <TextField
+                error={emailHelper.length !== 0}
+                helperText={emailHelper}
+                label="Email"
+                id="email"
+                value={email}
+                onChange={handleChange}
+                fullWidth
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                InputProps={{ disableUnderline: true }}
+                id="message"
+                multiline
+                minRows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className={classes.message}
+                fullWidth
+              />
             </Grid>
             <Grid
               item

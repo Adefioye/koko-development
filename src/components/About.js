@@ -87,75 +87,65 @@ export default function About({ setValue, setSelectedIndex }) {
         justifyContent="space-between"
         className={classes.rowContainer}
       >
-        <Grid item>
-          <Grid
-            item
-            container
-            direction="column"
-            style={{ maxWidth: "40em" }}
-            lg
-          >
-            <Grid item>
-              <Typography
-                align={matchesMD ? "center" : "inherit"}
-                variant="h4"
-                gutterBottom
-              >
-                History
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                variant="body1"
-                style={{ fontWeight: 700, fontStyle: "italic" }}
-                align={matchesMD ? "center" : "inherit"}
-                paragraph
-              >
-                We’re the new kid on the block.
-              </Typography>
-              <Typography
-                align={matchesMD ? "center" : "inherit"}
-                variant="body1"
-                paragraph
-              >
-                Founded in 2019, we’re ready to get our hands on the world’s
-                business problems.
-              </Typography>
-              <Typography
-                align={matchesMD ? "center" : "inherit"}
-                variant="body1"
-                paragraph
-              >
-                It all started with one question: Why aren’t all businesses
-                using available technology? There are many different answers to
-                that question: economic barriers, social barriers, educational
-                barriers, and sometimes institutional barriers.
-              </Typography>
-              <Typography
-                align={matchesMD ? "center" : "inherit"}
-                variant="body1"
-                paragraph
-              >
-                We aim to be a powerful force in overcoming these obstacles.
-                Recent developments in software engineering and computing power,
-                compounded by the proliferation of smart phones, has opened up
-                infinite worlds of possibility. Things that have always been
-                done by hand can now be done digitally and automatically, and
-                completely new methods of interaction are created daily. Taking
-                full advantage of these advancements is the name of the game.
-              </Typography>
-            </Grid>
+        <Grid item container direction="column" style={{ maxWidth: "40em" }} lg>
+          <Grid item>
+            <Typography
+              align={matchesMD ? "center" : "inherit"}
+              variant="h4"
+              gutterBottom
+            >
+              History
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              variant="body1"
+              style={{ fontWeight: 700, fontStyle: "italic" }}
+              align={matchesMD ? "center" : "inherit"}
+              paragraph
+            >
+              We’re the new kid on the block.
+            </Typography>
+            <Typography
+              align={matchesMD ? "center" : "inherit"}
+              variant="body1"
+              paragraph
+            >
+              Founded in 2019, we’re ready to get our hands on the world’s
+              business problems.
+            </Typography>
+            <Typography
+              align={matchesMD ? "center" : "inherit"}
+              variant="body1"
+              paragraph
+            >
+              It all started with one question: Why aren’t all businesses using
+              available technology? There are many different answers to that
+              question: economic barriers, social barriers, educational
+              barriers, and sometimes institutional barriers.
+            </Typography>
+            <Typography
+              align={matchesMD ? "center" : "inherit"}
+              variant="body1"
+              paragraph
+            >
+              We aim to be a powerful force in overcoming these obstacles.
+              Recent developments in software engineering and computing power,
+              compounded by the proliferation of smart phones, has opened up
+              infinite worlds of possibility. Things that have always been done
+              by hand can now be done digitally and automatically, and
+              completely new methods of interaction are created daily. Taking
+              full advantage of these advancements is the name of the game.
+            </Typography>
           </Grid>
         </Grid>
-        <Grid item>
-          <Grid item container justifyContent="center" lg>
-            <img
-              src={history}
-              width="100%"
-              alt="a notebook with a quill"
-              style={{ maxHeight: matchesMD ? "12em" : "25em" }}
-            />
-          </Grid>
+        <Grid item container justifyContent="center" lg alignItems="center">
+          <img
+            src={history}
+            width="100%"
+            alt="a notebook with a quill"
+            style={{ maxHeight: matchesMD ? "12em" : "25em" }}
+          />
         </Grid>
       </Grid>
       {/* Founder section */}

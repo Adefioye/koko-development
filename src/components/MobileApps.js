@@ -45,7 +45,7 @@ export default function MobileApps({ setValue, setSelectedIndex }) {
 
   return (
     <Grid container direction="column">
-      {/* Custom software development introduction*/}
+      {/* Custom software development introduction */}
       <Grid
         item
         container

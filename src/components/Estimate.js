@@ -408,6 +408,7 @@ export default function Estimate() {
                     fontWeight: 500,
                     fontSize: "2.5rem",
                     marginTop: "5em",
+                    lineHeight: 1.25,
                   }}
                 >
                   {question.title}
@@ -421,10 +422,18 @@ export default function Estimate() {
               </Grid>
               <Grid item container>
                 {question.options.map((option) => (
-                  <Grid item container direction="column" key={option.id} md>
+                  <Grid
+                    item
+                    container
+                    direction="column"
+                    key={option.id}
+                    component={Button}
+                    md
+                    style={{ display: "grid" }}
+                  >
                     <Grid
                       item
-                      style={{ maxWidth: "12em", marginBottom: "2em" }}
+                      style={{ maxWidth: "14em", marginBottom: "2em" }}
                     >
                       <Typography variant="h6" align="center" gutterButtom>
                         {option.title}

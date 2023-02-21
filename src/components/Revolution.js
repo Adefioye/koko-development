@@ -59,7 +59,7 @@ export default function Revolution({ setValue, setSelectedIndex }) {
       >
         <Grid
           item
-          container
+          // container
           style={{
             marginRight: "2em",
             marginBottom: matchesMD ? "5em" : null,
